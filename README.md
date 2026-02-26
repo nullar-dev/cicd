@@ -644,18 +644,20 @@ This project includes a **pre-commit hook** that automatically runs checks befor
 pnpm run setup
 ```
 
-**What it does:**
+**What it does (2026 best practice):**
 
-- ✅ Runs ESLint
-- ✅ Auto-fixes formatting
-- ✅ TypeScript check
-- ✅ Runs all tests
+1. **Format check** (fastest) → auto-fixes if needed
+2. **ESLint** → auto-fixes if needed
+3. **TypeScript** check
+4. **Tests**
+5. **Only stages** after ALL checks pass
 
 **Why use it?**
 
 - Catches issues **before** they reach CI
 - Saves time waiting for CI
 - Keeps your commits clean
+- Auto-fixes what it can, warns for manual fixes
 
 The hook will run automatically when you commit!
 
@@ -819,6 +821,4 @@ Built with ❤️ using 2026 best practices:
 
 ---
 
-_Last updated: 2026-02-25_
-
-# test
+_Last updated: 2026-02-26_
