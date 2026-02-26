@@ -418,6 +418,7 @@ pnpm run lint      # Check code style
 pnpm run format:check  # Check formatting
 pnpm run typecheck # Check types
 pnpm run test      # Run tests
+pnpm run test:coverage  # Run tests with coverage (enforces 80%)
 pnpm run build     # Build app
 ```
 

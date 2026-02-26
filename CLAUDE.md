@@ -20,18 +20,19 @@ pnpm run build
 
 ## Available Commands
 
-| Command                   | Description            |
-| ------------------------- | ---------------------- |
-| `pnpm run lint`           | Run ESLint             |
-| `pnpm run format`         | Auto-fix formatting    |
-| `pnpm run format:check`   | Check formatting       |
-| `pnpm run typecheck`      | TypeScript check       |
-| `pnpm run test`           | Run all tests          |
-| `pnpm run test:unit`      | Unit tests             |
-| `pnpm run test:component` | Component tests        |
-| `pnpm run test:api`       | API tests              |
-| `pnpm run test:e2e`       | E2E tests (Playwright) |
-| `pnpm run build`          | Build Next.js app      |
+| Command                   | Description             |
+| ------------------------- | ----------------------- |
+| `pnpm run lint`           | Run ESLint              |
+| `pnpm run format`         | Auto-fix formatting     |
+| `pnpm run format:check`   | Check formatting        |
+| `pnpm run typecheck`      | TypeScript check        |
+| `pnpm run test`           | Run all tests           |
+| `pnpm run test:coverage`  | Run tests with coverage |
+| `pnpm run test:unit`      | Unit tests              |
+| `pnpm run test:component` | Component tests         |
+| `pnpm run test:api`       | API tests               |
+| `pnpm run test:e2e`       | E2E tests (Playwright)  |
+| `pnpm run build`          | Build Next.js app       |
 
 ## Project Structure
 
@@ -107,8 +108,9 @@ Jobs:
 3. **Unit Tests** - Vitest
 4. **Component Tests** - Vitest
 5. **API Tests** - Vitest
-6. **E2E Tests** - Playwright
-7. **Build** - Next.js build
+6. **Coverage** - Vitest (enforces 80% threshold)
+7. **E2E Tests** - Playwright
+8. **Build** - Next.js build
 
 ## Troubleshooting
 
