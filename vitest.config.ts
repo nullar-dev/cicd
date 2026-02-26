@@ -31,6 +31,15 @@ export default defineConfig(() => {
     );
   }
 
+  // Validate coverage include/exclude patterns
+  const validateGlob = (name: string, value: string) => {
+    if (value.includes('..')) {
+      throw new Error(`Path traversal detected in ${name}: ${value}`);
+    }
+  };
+  if (env.COVERAGE_INCLUDE) validateGlob('COVERAGE_INCLUDE', env.COVERAGE_INCLUDE);
+  if (env.COVERAGE_EXCLUDE) validateGlob('COVERAGE_EXCLUDE', env.COVERAGE_EXCLUDE);
+
   return {
     plugins: [react()],
     resolve: {
