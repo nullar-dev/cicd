@@ -27,7 +27,7 @@ runtime:
 
   # Package manager
   package_manager: 'pnpm'
-  pnpm_version: '10.30.2'
+  pnpm_version: '10'
 
   # Runner for GitHub Actions
   runner: 'ubuntu-latest'

@@ -11,10 +11,10 @@ const config = defineConfig({
   forbidOnly: !!process.env.CI,
 
   // Retry failed tests in CI
-  retries: parseInt(process.env.PLAYWRIGHT_RETRIES || (process.env.CI ? '2' : '0'), 10),
+  retries: parseInt(process.env.PLAYWRIGHT_RETRIES || (process.env.CI ? '2' : '0'), 10) || (process.env.CI ? 2 : 0),
 
   // Limit workers in CI
-  workers: process.env.CI ? parseInt(process.env.PLAYWRIGHT_WORKERS || '1', 10) : undefined,
+  workers: process.env.CI ? (parseInt(process.env.PLAYWRIGHT_WORKERS || '1', 10) || 1) : undefined,
 
   // Reporter
   reporter: process.env.PLAYWRIGHT_REPORTER || 'list',
@@ -71,7 +71,7 @@ const config = defineConfig({
     reuseExistingServer: process.env.E2E_REUSE_SERVER !== 'false' && !process.env.CI,
 
     // Timeout
-    timeout: parseInt(process.env.E2E_TIMEOUT_MS || '120000', 10),
+    timeout: parseInt(process.env.E2E_TIMEOUT_MS || '120000', 10) || 120000,
   },
 });
 

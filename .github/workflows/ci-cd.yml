@@ -29,7 +29,7 @@ concurrency:
 env:
   # Runtime
   NODE_VERSION: ${{ vars.NODE_VERSION || '24' }}
-  PNPM_VERSION: ${{ vars.PNPM_VERSION || '10.30.2' }}
+  PNPM_VERSION: ${{ vars.PNPM_VERSION || '10' }}
 
   # Test Paths
   TEST_UNIT_DIR: ${{ vars.TEST_UNIT_DIR || 'src/__tests__/unit' }}
