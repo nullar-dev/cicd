@@ -5,7 +5,7 @@
 
 echo ""
 echo "═══════════════════════════════════════════════════════════════"
-echo "  ⚡ Nullar Pre-Commit Hook Setup ⚡"
+echo "  ⚡ Nullar pre-commit-hook setup ⚡"
 echo "═══════════════════════════════════════════════════════════════"
 echo ""
 echo " ⚡ Setting up pre-commit hook..."
