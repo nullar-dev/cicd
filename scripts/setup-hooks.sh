@@ -14,7 +14,7 @@ echo ""
 # Get the directory of the script
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
-HOOK_SOURCE="$PROJECT_ROOT/.git/hooks/pre-commit"
+HOOK_SOURCE="$SCRIPT_DIR/pre-commit"
 HOOK_TARGET="$PROJECT_ROOT/.git/hooks/pre-commit"
 
 # Create .git/hooks directory if it doesn't exist

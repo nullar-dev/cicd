@@ -1,0 +1,63 @@
+#!/bin/sh
+# ═══════════════════════════════════════════════════════════════
+#  ⚡ Nullar pre-commit-hook ⚡
+# ═══════════════════════════════════════════════════════════════
+
+echo ""
+echo "═══════════════════════════════════════════════════════════════"
+echo "  ⚡ Nullar Pre-Commit Hook ⚡"
+echo "═══════════════════════════════════════════════════════════════"
+echo ""
+echo " ⚡ Running pre-commit checks..."
+echo ""
+
+# ANSI colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Run lint
+echo " ${BLUE}🔍 Running ESLint...${NC}"
+pnpm run lint
+if [ $? -ne 0 ]; then
+    echo ""
+    echo " ${RED}❌ LINT FAILED${NC}"
+    echo " ${YELLOW}Fix with: pnpm run format && pnpm run lint${NC}"
+    exit 1
+fi
+
+# Run format
+echo " ${BLUE}🎨 Checking formatting...${NC}"
+pnpm run format
+if [ $? -ne 0 ]; then
+    echo ""
+    echo " ${RED}❌ FORMAT FAILED${NC}"
+    echo " ${YELLOW}Fix with: pnpm run format${NC}"
+    exit 1
+fi
+
+# Run typecheck
+echo " ${BLUE}🔦 Running TypeScript...${NC}"
+pnpm run typecheck
+if [ $? -ne 0 ]; then
+    echo ""
+    echo " ${RED}❌ TYPECHECK FAILED${NC}"
+    exit 1
+fi
+
+# Run tests
+echo " ${BLUE}🧪 Running tests...${NC}"
+pnpm run test
+if [ $? -ne 0 ]; then
+    echo ""
+    echo " ${RED}❌ TESTS FAILED${NC}"
+    exit 1
+fi
+
+echo ""
+echo "═══════════════════════════════════════════════════════════════"
+echo "  ${GREEN}✅ All checks passed! Ready to commit!${NC}"
+echo "═══════════════════════════════════════════════════════════════"
+echo ""
