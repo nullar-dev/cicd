@@ -125,7 +125,7 @@ jobs:
         uses: github/codeql-action/analyze@v4.32.4
 
       - name: Run Secret Scanning
-        if: github.event.repository.default_branch != ''
+        if: github.event.repository.default_branch != '' && github.event.before != github.sha
         uses: trufflesecurity/trufflehog@v3.93.4
         with:
           base: ${{ github.event.before }}
