@@ -128,7 +128,7 @@ jobs:
         if: github.event.repository.default_branch != ''
         uses: trufflesecurity/trufflehog@v3.93.4
         with:
-          base: ${{ github.event.repository.default_branch }}
+          base: ${{ github.event.before }}
           head: ${{ github.sha }}
 
   # ---------------------------------------------------------------------------
