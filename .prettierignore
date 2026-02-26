@@ -6,3 +6,6 @@ out/
 coverage/
 .pnp/
 .pnp.js
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
