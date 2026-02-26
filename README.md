@@ -32,7 +32,8 @@ Before doing anything, ask these questions:
 | 4   | If YES to #3, what do you want?        | (see below)      |
 | 5   | Do you want Sentry for error tracking? | YES / NO         |
 | 6   | Do you want AI PR Reviewer?            | YES / NO         |
-| 7   | Do you have GitHub CLI (gh) installed? | YES / NO         |
+| 7   | Do you want Coolify for hosting?       | YES / NO         |
+| 8   | Do you have GitHub CLI (gh) installed? | YES / NO         |
 
 **After you get all answers, THEN follow the step-by-step guide below.**
 
@@ -56,6 +57,7 @@ Before doing anything, ask these questions:
 >
 > **If user answered YES to Sentry:** Show them the "Optional: Sentry" section below
 > **If user answered YES to AI PR Reviewer:** Show them the "Optional: AI PR Reviewer" section below
+> **If user answered YES to Coolify:** Show them the "Optional: Coolify" section below
 > **If NO:** Skip those sections
 >
 > **If user answered NO to gh CLI:** Include the "Prerequisite: Set Up GitHub CLI" section below in your instructions
@@ -626,6 +628,79 @@ The AI PR Reviewer automatically runs on every PR! No additional setup needed.
 - **Keep your keys secret!** Never share them publicly
 - **Keys are free** (with limits): MiniMax and GLM have free tiers
 - **If keys expire**, the CI will fail - just regenerate and update
+
+---
+
+## ☁️ Optional: Coolify (Self-Hosted Hosting)
+
+Want to deploy your app with Coolify? Here's the complete step-by-step:
+
+---
+
+### Step 1: Install Coolify (Choose One)
+
+**Option A: Coolify Cloud (Managed)**
+
+- Go to: https://coolify.io
+- Sign up for an account
+- Create your first project
+
+**Option B: Self-Hosted (Free)**
+
+- Install on your own server/VPS
+- Follow: https://coolify.io/docs
+
+---
+
+### Step 2: Connect Your GitHub Repository
+
+1. In Coolify, go to your project
+2. Click **"Add New Resource"**
+3. Select **"GitHub Repository"**
+4. Choose: `YOUR_USERNAME/YOUR_REPO`
+5. Click **"Connect"**
+
+---
+
+### Step 3: Configure Build Settings
+
+Fill in these settings:
+
+| Setting             | Value                             |
+| ------------------- | --------------------------------- |
+| **Build Pack**      | `Nixpacks` (auto-detects Next.js) |
+| **Port**            | `3000`                            |
+| **Install Command** | `pnpm install`                    |
+| **Build Command**   | `pnpm run build`                  |
+| **Start Command**   | `pnpm run start`                  |
+
+---
+
+### Step 4: Add Environment Variables
+
+Add the same environment variables from your local `.env.local`:
+
+**Required:**
+
+- (none - CI/CD handles this)
+
+**If Sentry enabled:**
+
+- Add `NEXT_PUBLIC_SENTRY_DSN` from your Sentry setup
+
+**Other variables:**
+
+- Any from your `.env.example`
+
+---
+
+### Step 5: Deploy
+
+1. Click **"Deploy"** button
+2. Wait for build to complete
+3. Your app is live! 🌐
+
+**Auto-Deploy:** Coolify automatically deploys when you push to GitHub!
 
 ---
 
