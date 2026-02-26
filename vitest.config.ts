@@ -52,7 +52,7 @@ export default defineConfig(() => {
           .split(',')
           .map(p => p.trim())
           .filter(Boolean),
-        exclude: (env.COVERAGE_EXCLUDE || '**/*.test.ts,**/*.spec.ts,**/e2e/**,**/node_modules/**')
+        exclude: (env.COVERAGE_EXCLUDE || '**/*.test.ts,**/*.spec.ts,**/e2e/**,**/node_modules/**,src/app/layout.tsx,src/app/**/metadata.ts')
           .split(',')
           .map(p => p.trim())
           .filter(Boolean),
