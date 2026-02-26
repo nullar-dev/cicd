@@ -18,8 +18,7 @@
     "test:component": "vitest run",
     "test:api": "vitest run",
     "test:e2e": "playwright test",
-    "sentry": "sentry",
-    "setup": "sh scripts/setup-hooks.sh"
+    "sentry": "sentry"
   },
   "dependencies": {
     "@sentry/nextjs": "^10.40.0",

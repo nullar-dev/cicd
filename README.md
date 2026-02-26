@@ -728,8 +728,8 @@ Go to: `https://github.com/YOUR_USERNAME/YOUR_REPO/settings/variables/new`
 This project includes a **pre-commit hook** that automatically runs checks before every commit:
 
 ```bash
-# Setup the hook (run once)
-pnpm run setup
+# Enable the hook (run once)
+git config core.hooksPath .githooks
 ```
 
 **What it does (2026 best practice):**
