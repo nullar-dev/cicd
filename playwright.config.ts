@@ -11,10 +11,12 @@ const config = defineConfig({
   forbidOnly: !!process.env.CI,
 
   // Retry failed tests in CI
-  retries: parseInt(process.env.PLAYWRIGHT_RETRIES || (process.env.CI ? '2' : '0'), 10) || (process.env.CI ? 2 : 0),
+  retries:
+    parseInt(process.env.PLAYWRIGHT_RETRIES || (process.env.CI ? '2' : '0'), 10) ||
+    (process.env.CI ? 2 : 0),
 
   // Limit workers in CI
-  workers: process.env.CI ? (parseInt(process.env.PLAYWRIGHT_WORKERS || '1', 10) || 1) : undefined,
+  workers: process.env.CI ? parseInt(process.env.PLAYWRIGHT_WORKERS || '1', 10) || 1 : undefined,
 
   // Reporter
   reporter: process.env.PLAYWRIGHT_REPORTER || 'list',
