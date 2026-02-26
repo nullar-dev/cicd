@@ -5,7 +5,7 @@
 
 echo ""
 echo "═══════════════════════════════════════════════════════════════"
-echo "  ⚡ Nullar Pre-Commit Hook ⚡"
+echo "  ⚡ Nullar pre-commit-hook ⚡"
 echo "═══════════════════════════════════════════════════════════════"
 echo ""
 echo " ⚡ Running pre-commit checks..."
