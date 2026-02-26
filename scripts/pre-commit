@@ -24,8 +24,8 @@ pnpm run format:check
 if [ $? -ne 0 ]; then
     echo " ${YELLOW}Formatting issues found, fixing...${NC}"
     pnpm run format
-    # Stage fixed files
-    git add -A
+    # Stage only modified files (not untracked)
+    git add -u
 fi
 
 # Run ESLint
