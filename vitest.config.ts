@@ -26,7 +26,9 @@ export default defineConfig(() => {
   const validProviders = ['v8', 'istanbul'];
   const coverageProvider = env.COVERAGE_PROVIDER || 'v8';
   if (!validProviders.includes(coverageProvider)) {
-    throw new Error(`Invalid COVERAGE_PROVIDER: ${coverageProvider}. Must be one of: ${validProviders.join(', ')}`);
+    throw new Error(
+      `Invalid COVERAGE_PROVIDER: ${coverageProvider}. Must be one of: ${validProviders.join(', ')}`
+    );
   }
 
   return {
