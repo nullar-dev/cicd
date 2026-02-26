@@ -24,8 +24,6 @@ pnpm run format:check
 if [ $? -ne 0 ]; then
     echo " ${YELLOW}Formatting issues found, fixing...${NC}"
     pnpm run format
-    # Stage only modified files (not untracked)
-    git add -u
 fi
 
 # Run ESLint
@@ -34,14 +32,13 @@ pnpm run lint
 if [ $? -ne 0 ]; then
     echo " ${YELLOW}Lint issues found, auto-fixing...${NC}"
     pnpm run lint:fix
-    # Stage fixed files
-    git add -u
     # Re-run lint to verify
     pnpm run lint
     if [ $? -ne 0 ]; then
         echo ""
         echo " ${RED}❌ LINT FAILED${NC}"
         echo " ${YELLOW}Fix remaining lint errors manually${NC}"
+        echo " ${YELLOW}Modified files are NOT staged - safe to inspect${NC}"
         exit 1
     fi
 fi
@@ -52,6 +49,7 @@ pnpm run typecheck
 if [ $? -ne 0 ]; then
     echo ""
     echo " ${RED}❌ TYPECHECK FAILED${NC}"
+    echo " ${YELLOW}Modified files are NOT staged - safe to inspect${NC}"
     exit 1
 fi
 
@@ -61,8 +59,12 @@ pnpm run test
 if [ $? -ne 0 ]; then
     echo ""
     echo " ${RED}❌ TESTS FAILED${NC}"
+    echo " ${YELLOW}Modified files are NOT staged - safe to inspect${NC}"
     exit 1
 fi
+
+# All checks passed - stage modified files
+git add -u
 
 echo ""
 echo "═══════════════════════════════════════════════════════════════"
