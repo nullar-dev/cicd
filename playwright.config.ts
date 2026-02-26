@@ -72,8 +72,8 @@ const config = defineConfig({
     // Reuse existing server (useful for local production testing)
     reuseExistingServer: process.env.E2E_REUSE_SERVER !== 'false' && !process.env.CI,
 
-    // Timeout
-    timeout: parseInt(process.env.E2E_TIMEOUT_MS || '120000', 10) || 120000,
+    // Timeout (5 minutes to account for build + test)
+    timeout: parseInt(process.env.E2E_TIMEOUT_MS || '300000', 10) || 300000,
   },
 });
 
