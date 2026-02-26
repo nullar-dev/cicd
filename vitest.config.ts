@@ -57,9 +57,9 @@ export default defineConfig(() => {
       globals: true,
       setupFiles: ['./vitest.setup.ts'],
       include: [
-        (env.TEST_UNIT_DIR || 'src/__tests__/unit') + '/**/*.{ts,tsx}',
-        (env.TEST_COMPONENT_DIR || 'src/__tests__/components') + '/**/*.{ts,tsx}',
-        (env.TEST_API_DIR || 'src/__tests__/api') + '/**/*.{ts,tsx}',
+        (env.TEST_UNIT_DIR?.trim() || 'src/__tests__/unit') + '/**/*.{ts,tsx}',
+        (env.TEST_COMPONENT_DIR?.trim() || 'src/__tests__/components') + '/**/*.{ts,tsx}',
+        (env.TEST_API_DIR?.trim() || 'src/__tests__/api') + '/**/*.{ts,tsx}',
       ].filter(Boolean),
       exclude: ['**/e2e/**', '**/node_modules/**'],
       coverage: {
