@@ -38,6 +38,9 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
+# Re-stage fixed files
+git add -A
+
 # Run typecheck
 echo " ${BLUE}🔦 Running TypeScript...${NC}"
 pnpm run typecheck
