@@ -32,10 +32,18 @@ fi
 echo " ${BLUE}🔍 Running ESLint...${NC}"
 pnpm run lint
 if [ $? -ne 0 ]; then
-    echo ""
-    echo " ${RED}❌ LINT FAILED${NC}"
-    echo " ${YELLOW}Fix with: pnpm run format && pnpm run lint${NC}"
-    exit 1
+    echo " ${YELLOW}Lint issues found, auto-fixing...${NC}"
+    pnpm exec eslint . --ext .ts,.tsx,.js,.jsx --fix
+    # Stage fixed files
+    git add -u
+    # Re-run lint to verify
+    pnpm run lint
+    if [ $? -ne 0 ]; then
+        echo ""
+        echo " ${RED}❌ LINT FAILED${NC}"
+        echo " ${YELLOW}Fix remaining lint errors manually${NC}"
+        exit 1
+    fi
 fi
 
 # Run TypeScript
