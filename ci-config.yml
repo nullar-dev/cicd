@@ -105,8 +105,8 @@ e2e:
   # Base URL for E2E tests
   base_url: 'http://localhost:3000'
 
-  # Command to start the development server
-  start_command: 'pnpm run dev'
+  # Command to start the production server (build first, then start)
+  start_command: 'pnpm run build && pnpm run start'
 
   # Playwright settings
   parallel: true

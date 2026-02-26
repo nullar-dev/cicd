@@ -63,13 +63,13 @@ const config = defineConfig({
 
   // Web server configuration
   webServer: {
-    // Command to start the dev server
-    command: process.env.E2E_START_COMMAND || 'pnpm run dev',
+    // Command to start the production server (build first, then start)
+    command: process.env.E2E_START_COMMAND || 'pnpm run build && pnpm run start',
 
     // URL to check
     url: process.env.E2E_BASE_URL || 'http://localhost:3000',
 
-    // Reuse existing server (useful for local development)
+    // Reuse existing server (useful for local production testing)
     reuseExistingServer: process.env.E2E_REUSE_SERVER !== 'false' && !process.env.CI,
 
     // Timeout
