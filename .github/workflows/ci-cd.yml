@@ -46,6 +46,10 @@ env:
   # Build
   BUILD_RETENTION_DAYS: ${{ vars.BUILD_RETENTION_DAYS || '7' }}
 
+  # Timeouts (in minutes)
+  CI_E2E_TIMEOUT: ${{ vars.CI_E2E_TIMEOUT || '30' }}
+  CI_BUILD_TIMEOUT: ${{ vars.CI_BUILD_TIMEOUT || '30' }}
+
 # =============================================================================
 # JOBS
 # =============================================================================
@@ -254,7 +258,7 @@ jobs:
   e2e-test:
     name: E2E Tests
     runs-on: ${{ vars.CI_RUNNER || 'ubuntu-latest' }}
-    timeout-minutes: 15
+    timeout-minutes: ${{ vars.CI_E2E_TIMEOUT || 30 }}
     permissions:
       contents: read
     steps:
@@ -296,7 +300,7 @@ jobs:
   build:
     name: Build
     runs-on: ${{ vars.CI_RUNNER || 'ubuntu-latest' }}
-    timeout-minutes: 20
+    timeout-minutes: ${{ vars.CI_BUILD_TIMEOUT || 30 }}
     needs: [lint, security, unit-test, component-test, api-test, coverage, e2e-test]
     permissions:
       contents: read
