@@ -637,18 +637,31 @@ Want to deploy your app with Coolify? Here's the complete step-by-step:
 
 ---
 
-### Step 1: Install Coolify (Choose One)
+### Which Scenario Applies to You?
 
-**Option A: Coolify Cloud (Managed)**
+**Scenario A: I already have Coolify**
+→ Skip to Step 2 below
+
+**Scenario B: I'm new to Coolify**
+→ Start with Step 1 below
+
+---
+
+### Step 1: Install Coolify (If You Don't Have It Yet)
+
+**Option A: Coolify Cloud (Managed - Easiest)**
 
 - Go to: https://coolify.io
 - Sign up for an account
 - Create your first project
+- Done! Skip to Step 2
 
-**Option B: Self-Hosted (Free)**
+**Option B: Self-Hosted (Free - Your Own Server)**
 
 - Install on your own server/VPS
 - Follow: https://coolify.io/docs
+- After installation, create a project
+- Skip to Step 2
 
 ---
 
