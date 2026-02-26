@@ -22,6 +22,13 @@ export default defineConfig(() => {
     );
   }
 
+  // Validate coverage provider
+  const validProviders = ['v8', 'istanbul'];
+  const coverageProvider = env.COVERAGE_PROVIDER || 'v8';
+  if (!validProviders.includes(coverageProvider)) {
+    throw new Error(`Invalid COVERAGE_PROVIDER: ${coverageProvider}. Must be one of: ${validProviders.join(', ')}`);
+  }
+
   return {
     plugins: [react()],
     resolve: {
@@ -40,7 +47,7 @@ export default defineConfig(() => {
       ].filter(Boolean),
       exclude: ['**/e2e/**', '**/node_modules/**'],
       coverage: {
-        provider: (env.COVERAGE_PROVIDER || 'v8') as 'v8' | 'istanbul',
+        provider: coverageProvider as 'v8' | 'istanbul',
         reporter: ['text', 'json', 'html'],
         thresholds: {
           lines: coverageThreshold,
