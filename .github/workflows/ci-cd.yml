@@ -57,6 +57,7 @@ jobs:
   lint:
     name: Lint
     runs-on: ${{ vars.CI_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 15
     permissions:
       contents: read
     steps:
@@ -295,6 +296,7 @@ jobs:
   build:
     name: Build
     runs-on: ${{ vars.CI_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 20
     needs: [lint, security, unit-test, component-test, api-test, coverage, e2e-test]
     permissions:
       contents: read
