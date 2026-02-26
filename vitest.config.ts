@@ -40,6 +40,11 @@ export default defineConfig(() => {
   if (env.COVERAGE_INCLUDE) validateGlob('COVERAGE_INCLUDE', env.COVERAGE_INCLUDE);
   if (env.COVERAGE_EXCLUDE) validateGlob('COVERAGE_EXCLUDE', env.COVERAGE_EXCLUDE);
 
+  // Validate test directory paths
+  if (env.TEST_UNIT_DIR) validateGlob('TEST_UNIT_DIR', env.TEST_UNIT_DIR);
+  if (env.TEST_COMPONENT_DIR) validateGlob('TEST_COMPONENT_DIR', env.TEST_COMPONENT_DIR);
+  if (env.TEST_API_DIR) validateGlob('TEST_API_DIR', env.TEST_API_DIR);
+
   return {
     plugins: [react()],
     resolve: {

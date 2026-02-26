@@ -125,6 +125,7 @@ jobs:
         uses: github/codeql-action/analyze@v4.32.4
 
       - name: Run Secret Scanning
+        if: github.event.repository.default_branch != ''
         uses: trufflesecurity/trufflehog@v3.93.4
         with:
           base: ${{ github.event.repository.default_branch }}
@@ -136,6 +137,7 @@ jobs:
   unit-test:
     name: Unit Tests
     runs-on: ${{ vars.CI_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 15
     permissions:
       contents: read
     steps:
@@ -164,6 +166,7 @@ jobs:
   component-test:
     name: Component Tests
     runs-on: ${{ vars.CI_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 15
     permissions:
       contents: read
     steps:
@@ -192,6 +195,7 @@ jobs:
   api-test:
     name: API Tests
     runs-on: ${{ vars.CI_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 15
     permissions:
       contents: read
     steps:
@@ -220,6 +224,7 @@ jobs:
   coverage:
     name: Coverage
     runs-on: ${{ vars.CI_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 15
     permissions:
       contents: read
     steps:
@@ -248,6 +253,7 @@ jobs:
   e2e-test:
     name: E2E Tests
     runs-on: ${{ vars.CI_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 15
     permissions:
       contents: read
     steps:

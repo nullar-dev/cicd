@@ -38,8 +38,8 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Re-stage fixed files
-git add -A
+# Run lint-staged to format only staged files
+pnpm lint-staged
 
 # Run typecheck
 echo " ${BLUE}🔦 Running TypeScript...${NC}"
